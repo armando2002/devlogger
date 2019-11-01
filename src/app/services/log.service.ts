@@ -59,6 +59,9 @@ export class LogService {
       }
     });
     this.logs.unshift(log);
+
+    // turn log array into string for local storage and update
+    localStorage.setItem('logs', JSON.stringify(this.logs));
   }
 
   deleteLog(log: Log) {
@@ -67,6 +70,9 @@ export class LogService {
         this.logs.splice(index, 1);
       }
     });
+
+    // delete log from local storage
+    localStorage.setItem('logs', JSON.stringify(this.logs));
   }
   
   clearState() {
